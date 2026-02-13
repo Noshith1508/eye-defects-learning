@@ -56,6 +56,14 @@ An interactive, educational web application that helps users understand common v
 - Modern UI/UX best practices
 - Performance optimization
 
+## 🌐 Live Demo
+
+**[View Live Application](https://noshith1508.github.io/eye-defects-learning/)** 🚀
+
+Experience the interactive platform directly in your browser!
+
+---
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -66,7 +74,7 @@ An interactive, educational web application that helps users understand common v
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/eye-defects-learning.git
+git clone https://github.com/Noshith1508/eye-defects-learning.git
 cd eye-defects-learning
 ```
 
@@ -158,10 +166,9 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 👨‍💻 Author
 
-**Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
-- Portfolio: [yourportfolio.com](https://yourportfolio.com)
+**Noshith**
+- GitHub: [@Noshith1508](https://github.com/Noshith1508)
+- Project: [Eye Defects Learning Platform](https://github.com/Noshith1508/eye-defects-learning)
 
 ## 📝 License
 
