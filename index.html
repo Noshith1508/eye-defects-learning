@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Human Eye Defects - Interactive Learning Platform | Vision Education</title>
+  <meta name="description"
+    content="Learn about common eye defects including Myopia, Hypermetropia, Astigmatism, and Presbyopia through interactive visual simulations and educational content.">
+  <meta name="keywords"
+    content="eye defects, myopia, hypermetropia, astigmatism, presbyopia, vision problems, eye health, interactive learning, educational platform">
+  <meta name="author" content="Team 7">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Human Eye Defects - Interactive Learning Platform">
+  <meta property="og:description"
+    content="Explore common vision defects through interactive simulations. Learn about causes, symptoms, and corrections.">
+  <meta property="og:image" content="eye.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Human Eye Defects - Interactive Learning">
+  <meta name="twitter:description" content="Interactive educational platform for learning about vision defects.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .hero-section {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .hero-section p {
+      font-size: 18px;
+      color: #555;
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.8;
+    }
+
+    .defect-card {
+      position: relative;
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 16px rgba(23, 178, 209, 0.3);
+      transition: var(--transition-bounce);
+    }
+
+    .defect-card:hover .card-icon {
+      transform: rotateY(360deg) scale(1.1);
+      box-shadow: 0 8px 24px rgba(23, 178, 209, 0.5);
+    }
+
+    .learn-more-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition-smooth);
+      box-shadow: 0 4px 12px rgba(23, 178, 209, 0.3);
+      border: none;
+      cursor: pointer;
+    }
+
+    .learn-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(23, 178, 209, 0.5);
+      background: linear-gradient(135deg, var(--primary-dark), var(--accent-color));
+    }
+
+    .learn-more-btn:active {
+      transform: translateY(0);
+    }
+
+    .stats-section {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      flex: 1;
+      min-width: 200px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: var(--transition-smooth);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-dark), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .stats-section {
+        flex-direction: column;
+      }
+
+      .hero-section p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="nav-bg">
+      <img src="eye.jpg" alt="Eye" />
+    </div>
+    <div class="nav-overlay">
+      <h1>Human Eye Defects</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="myopia.html">Myopia</a></li>
+        <li><a href="hypermetropia.html">Hypermetropia</a></li>
+        <li><a href="astigmatism.html">Astigmatism</a></li>
+        <li><a href="presbyopia.html">Presbyopia</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="hero-section">
+      <h2>Explore Common Vision Defects</h2>
+      <p>Discover how different eye conditions affect vision and learn about their causes and corrections through
+        interactive simulations.</p>
+    </div>
+
+    <div class="defect-grid">
+      <div class="defect-card">
+        <div class="card-content">
+          <div class="card-icon">🔍</div>
+          <h3>Myopia (Nearsightedness)</h3>
+          <p><strong>Description:</strong> Near objects appear clear, distant objects are blurry.</p>
+          <p><strong>Cause:</strong> Eyeball is too long or cornea too curved.</p>
+          <p><strong>Correction:</strong> Concave lenses.</p>
+          <a href="myopia.html" class="learn-more-btn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="defect-card">
+        <div class="card-content">
+          <div class="card-icon">🔭</div>
+          <h3>Hypermetropia (Farsightedness)</h3>
+          <p><strong>Description:</strong> Distant objects appear clear, near objects are blurry.</p>
+          <p><strong>Cause:</strong> Eyeball is too short or lens too flat.</p>
+          <p><strong>Correction:</strong> Convex lenses.</p>
+          <a href="hypermetropia.html" class="learn-more-btn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="defect-card">
+        <div class="card-content">
+          <div class="card-icon">🌀</div>
+          <h3>Astigmatism</h3>
+          <p><strong>Description:</strong> Blurred or distorted vision at all distances.</p>
+          <p><strong>Cause:</strong> Irregular curvature of the cornea or lens.</p>
+          <p><strong>Correction:</strong> Cylindrical lenses.</p>
+          <a href="astigmatism.html" class="learn-more-btn">Learn More →</a>
+        </div>
+      </div>
+
+      <div class="defect-card">
+        <div class="card-content">
+          <div class="card-icon">📖</div>
+          <h3>Presbyopia</h3>
+          <p><strong>Description:</strong> Age-related difficulty focusing on close objects.</p>
+          <p><strong>Cause:</strong> Loss of lens flexibility with age.</p>
+          <p><strong>Correction:</strong> Bifocal or progressive lenses.</p>
+          <a href="presbyopia.html" class="learn-more-btn">Learn More →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-section">
+      <div class="stat-card">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Vision Defects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Interactive</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">∞</div>
+        <div class="stat-label">Learning</div>
+      </div>
+    </div>
+  </main>
+
+  <footer
+    style="background: linear-gradient(135deg, rgba(2, 62, 138, 0.95), rgba(23, 178, 209, 0.95)); color: white; padding: 40px 20px; margin-top: 80px; text-align: center;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 30px;">
+        <div>
+          <h3 style="font-family: 'Poppins', sans-serif; margin-bottom: 15px; font-size: 20px;">👁️ Eye Health Education
+          </h3>
+          <p style="font-size: 14px; line-height: 1.6; opacity: 0.9;">Interactive platform for learning about common
+            vision defects and eye health.</p>
+        </div>
+        <div>
+          <h3 style="font-family: 'Poppins', sans-serif; margin-bottom: 15px; font-size: 20px;">Quick Links</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px;">
+            <a href="index.html" style="color: white; text-decoration: none; opacity: 0.9;">Home</a>
+            <a href="quiz.html" style="color: white; text-decoration: none; opacity: 0.9;">Take Quiz</a>
+            <a href="https://github.com" target="_blank" rel="noopener"
+              style="color: white; text-decoration: none; opacity: 0.9;">GitHub</a>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-family: 'Poppins', sans-serif; margin-bottom: 15px; font-size: 20px;">Disclaimer</h3>
+          <p style="font-size: 13px; line-height: 1.6; opacity: 0.9;">Educational tool only. Consult a qualified eye
+            care professional for medical advice.</p>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; font-size: 14px; opacity: 0.9;">
+        <p>© 2026 Team 7 | Made with ❤️ for educational purposes</p>
+        <p style="margin-top: 8px; font-size: 12px;">Built with HTML5, CSS3, and Vanilla JavaScript</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

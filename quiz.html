@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Human Eye Defects Quiz - Test Your Knowledge</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .quiz-wrapper {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 45px;
+      margin: 50px auto;
+      max-width: 900px;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      animation: fadeInScale 0.6s ease-out;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .quiz-wrapper h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 32px;
+      background: linear-gradient(135deg, var(--primary-dark), var(--accent-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    #timer {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: linear-gradient(135deg, rgba(23, 178, 209, 0.15), rgba(147, 51, 234, 0.15));
+      padding: 12px 24px;
+      border-radius: 50px;
+      display: inline-block;
+      margin: 0 auto 30px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    #timer-container {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #time {
+      color: var(--accent-color);
+      font-size: 22px;
+    }
+
+    .question {
+      margin-bottom: 30px;
+      padding: 25px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 16px;
+      border-left: 4px solid var(--primary-color);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+
+    .question:hover {
+      transform: translateX(5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .question p strong {
+      font-family: 'Poppins', sans-serif;
+      color: var(--primary-dark);
+      font-size: 17px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .question label {
+      display: block;
+      padding: 12px 15px;
+      margin: 8px 0;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      border: 2px solid transparent;
+      font-size: 15px;
+    }
+
+    .question label:hover {
+      background: rgba(23, 178, 209, 0.1);
+      border-color: var(--primary-color);
+      transform: translateX(5px);
+    }
+
+    .question input[type="radio"] {
+      margin-right: 10px;
+      cursor: pointer;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary-color);
+    }
+
+    .explanation {
+      margin-top: 15px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      display: none;
+      border-left: 3px solid;
+    }
+
+    .submit-btn-container {
+      text-align: center;
+      margin-top: 35px;
+    }
+
+    .submit-btn {
+      padding: 16px 48px;
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--success-color), hsl(145, 65%, 40%));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+      transition: var(--transition-bounce);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 28px rgba(72, 187, 120, 0.5);
+    }
+
+    .submit-btn:active {
+      transform: translateY(-1px) scale(1.02);
+    }
+
+    #score-display {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 30px;
+      padding: 25px;
+      background: linear-gradient(135deg, rgba(72, 187, 120, 0.15), rgba(34, 197, 94, 0.15));
+      border-radius: 20px;
+      color: var(--primary-dark);
+      box-shadow: var(--shadow-md);
+      animation: bounceIn 0.6s ease-out;
+    }
+
+    @keyframes bounceIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.3);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+
+      70% {
+        transform: scale(0.9);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .quiz-wrapper {
+        margin: 30px 15px;
+        padding: 25px;
+      }
+
+      .quiz-wrapper h2 {
+        font-size: 24px;
+      }
+
+      .submit-btn {
+        width: 100%;
+        padding: 14px 32px;
+      }
+
+      .question {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="nav-bg">
+      <img src="eye.jpg" alt="Eye" />
+    </div>
+    <div class="nav-overlay">
+      <h1>Knowledge Quiz</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="myopia.html">Myopia</a></li>
+        <li><a href="hypermetropia.html">Hypermetropia</a></li>
+        <li><a href="astigmatism.html">Astigmatism</a></li>
+        <li><a href="presbyopia.html">Presbyopia</a></li>
+        <li><a href="quiz.html" class="active">Quiz</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="quiz-wrapper">
+    <div class="back-button-container">
+      <a href="index.html" class="back-btn">
+        <span class="arrow">←</span>
+        <span>Back to Home</span>
+      </a>
+    </div>
+
+    <h2>🧠 Quiz: Human Eye Defects</h2>
+    <div id="timer-container">
+      <div id="timer">⏱️ Time Left: <span id="time">120</span> seconds</div>
+    </div>
+
+    <form id="quizForm">
+      <!-- Questions Start -->
+      <div class="question">
+        <p><strong>1. Which lens is used to correct myopia?</strong></p>
+        <label><input type="radio" name="q1" value="concave"> Concave</label>
+        <label><input type="radio" name="q1" value="convex"> Convex</label>
+        <label><input type="radio" name="q1" value="cylindrical"> Cylindrical</label>
+        <p class="explanation">✅ Myopia is corrected using a concave lens.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Which defect is caused due to loss of flexibility in the eye lens with age?</strong></p>
+        <label><input type="radio" name="q2" value="Myopia"> Myopia</label>
+        <label><input type="radio" name="q2" value="Presbyopia"> Presbyopia</label>
+        <label><input type="radio" name="q2" value="Astigmatism"> Astigmatism</label>
+        <p class="explanation">✅ Presbyopia occurs due to aging and stiffening of the eye lens.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Which defect is caused by an irregular shape of the cornea?</strong></p>
+        <label><input type="radio" name="q3" value="Hypermetropia"> Hypermetropia</label>
+        <label><input type="radio" name="q3" value="Astigmatism"> Astigmatism</label>
+        <label><input type="radio" name="q3" value="Presbyopia"> Presbyopia</label>
+        <p class="explanation">✅ Astigmatism is due to irregular curvature of the cornea.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Which lens is used to correct hypermetropia?</strong></p>
+        <label><input type="radio" name="q4" value="convex"> Convex</label>
+        <label><input type="radio" name="q4" value="concave"> Concave</label>
+        <label><input type="radio" name="q4" value="cylindrical"> Cylindrical</label>
+        <p class="explanation">✅ Hypermetropia is corrected using a convex lens.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>5. In myopia, where does the image form?</strong></p>
+        <label><input type="radio" name="q5" value="On the retina"> On the retina</label>
+        <label><input type="radio" name="q5" value="In front of the retina"> In front of the retina</label>
+        <label><input type="radio" name="q5" value="Behind the retina"> Behind the retina</label>
+        <p class="explanation">✅ In myopia, the image forms in front of the retina.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>6. What type of lens is used for astigmatism correction?</strong></p>
+        <label><input type="radio" name="q6" value="convex"> Convex</label>
+        <label><input type="radio" name="q6" value="cylindrical"> Cylindrical</label>
+        <label><input type="radio" name="q6" value="concave"> Concave</label>
+        <p class="explanation">✅ Astigmatism is corrected using cylindrical lenses.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>7. What kind of lens is included in bifocal glasses?</strong></p>
+        <label><input type="radio" name="q7" value="Only concave"> Only concave</label>
+        <label><input type="radio" name="q7" value="Only convex"> Only convex</label>
+        <label><input type="radio" name="q7" value="Both concave and convex"> Both concave and convex</label>
+        <p class="explanation">✅ Bifocal lenses combine concave and convex lenses for near and distant vision.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>8. What is the main cause of hypermetropia?</strong></p>
+        <label><input type="radio" name="q8" value="Elongated eyeball"> Elongated eyeball</label>
+        <label><input type="radio" name="q8" value="Shortened eyeball"> Shortened eyeball</label>
+        <label><input type="radio" name="q8" value="Irregular cornea"> Irregular cornea</label>
+        <p class="explanation">✅ Hypermetropia is usually caused by a shortened eyeball.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Presbyopia is most commonly seen in which age group?</strong></p>
+        <label><input type="radio" name="q9" value="Children"> Children</label>
+        <label><input type="radio" name="q9" value="Teenagers"> Teenagers</label>
+        <label><input type="radio" name="q9" value="Elderly"> Elderly</label>
+        <p class="explanation">✅ Presbyopia typically affects older adults due to aging of the eye lens.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>10. Which of these is a symptom of astigmatism?</strong></p>
+        <label><input type="radio" name="q10" value="Blurry vision at all distances"> Blurry vision at all
+          distances</label>
+        <label><input type="radio" name="q10" value="Only near vision is blurry"> Only near vision is blurry</label>
+        <label><input type="radio" name="q10" value="Only far vision is blurry"> Only far vision is blurry</label>
+        <p class="explanation">✅ Astigmatism causes general blurry vision due to distorted focus.</p>
+      </div>
+
+      <div class="question">
+        <p><strong>11. What is the main function of the retina?</strong></p>
+        <label><input type="radio" name="q11" value="Focus light"> Focus light</label>
+        <label><input type="radio" name="q11" value="Regulate eye pressure"> Regulate eye pressure</label>
+        <label><input type="radio" name="q11" value="Convert light into signals"> Convert light into signals</label>
+        <p class="explanation">✅ The retina converts light into nerve signals sent to the brain.</p>
+      </div>
+      <!-- Questions End -->
+
+      <div class="submit-btn-container">
+        <button type="button" class="submit-btn" onclick="submitQuiz()">Submit Quiz 🎯</button>
+      </div>
+    </form>
+
+    <!-- Score Display -->
+    <p id="score-display"></p>
+  </div>
+
+  <script>
+    let timeLeft = 120;
+    let timerInterval = setInterval(() => {
+      timeLeft--;
+      document.getElementById("time").textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        submitQuiz();
+      }
+    }, 1000);
+
+    function submitQuiz() {
+      clearInterval(timerInterval);
+      const form = document.getElementById('quizForm');
+      const correctAnswers = {
+        q1: 'concave',
+        q2: 'Presbyopia',
+        q3: 'Astigmatism',
+        q4: 'convex',
+        q5: 'In front of the retina',
+        q6: 'cylindrical',
+        q7: 'Both concave and convex',
+        q8: 'Shortened eyeball',
+        q9: 'Elderly',
+        q10: 'Blurry vision at all distances',
+        q11: 'Convert light into signals'
+      };
+
+      let score = 0;
+
+      for (let key in correctAnswers) {
+        const selectedInput = document.querySelector(`input[name="${key}"]:checked`);
+        const questionDiv = document.querySelector(`input[name="${key}"]`).closest('.question');
+        const explanation = questionDiv.querySelector('.explanation');
+
+        explanation.style.display = 'block';
+
+        if (selectedInput && selectedInput.value === correctAnswers[key]) {
+          explanation.style.color = 'green';
+          explanation.style.borderLeftColor = 'green';
+          score++;
+        } else {
+          explanation.style.color = 'red';
+          explanation.style.borderLeftColor = 'red';
+        }
+      }
+
+      const percentage = Math.round((score / Object.keys(correctAnswers).length) * 100);
+      let emoji = '🎉';
+      if (percentage < 50) emoji = '📚';
+      else if (percentage < 75) emoji = '👍';
+      else if (percentage >= 90) emoji = '🏆';
+
+      document.getElementById('score-display').innerHTML = `${emoji} You scored <span style="color: var(--accent-color);">${score}</span> out of ${Object.keys(correctAnswers).length} (${percentage}%)`;
+
+      // Scroll to score
+      document.getElementById('score-display').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  </script>
+
+</body>
+
+</html>
